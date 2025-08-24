@@ -1,14 +1,13 @@
 import express from 'express'
 import cors from 'cors'
-import { prismaClient } from '@prisma/client'
+import {PrismaClient } from '@prisma/client'
 
 const app = express()
 const PORT = 3000
-const prisma = new prismaClient()
+const prisma = new PrismaClient()
 
 app.use(express.json())
 app.use(cors())
-
 
 app.get('/membros/:id', async (req, res) => {
     let membros = []
