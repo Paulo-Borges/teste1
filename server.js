@@ -26,6 +26,19 @@ app.get('/membros/:id', async (req, res) => {
     }
 })
 
+app.post('/membros', async (req, res) => {
+    
+        await prisma.membros.create({
+            data: {
+                name: req.body.name,
+                email: req.body.email,
+                cargo: req.body.cargo
+            }
+        }) 
+        res.status(201).json(req.body)
+    
+})
+
 app.listen(PORT, () => {
     console.log('servidor RODANDO!')
 })
