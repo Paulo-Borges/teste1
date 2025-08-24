@@ -39,6 +39,22 @@ app.post('/membros', async (req, res) => {
     
 })
 
+app.put('/membros/:id', async (req, res) => {
+    
+        await prisma.membros.update({
+            where: {
+                id: req.params.id
+            },
+            data: {
+                name: req.body.name,
+                email: req.body.email,
+                cargo: req.body.cargo
+            }
+        }) 
+        res.status(201).json(req.body)
+    
+})
+
 app.listen(PORT, () => {
     console.log('servidor RODANDO!')
 })
