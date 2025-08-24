@@ -55,6 +55,17 @@ app.put('/membros/:id', async (req, res) => {
     
 })
 
+app.delete('/membros/:id', async (req, res) => {
+    
+        await prisma.membros.delete({
+            where: {
+                id: req.params.id
+            },
+        }) 
+        res.status(200).json({message: "Usuário DELETADO com SUCESSO!"})
+    
+})
+
 app.listen(PORT, () => {
     console.log('servidor RODANDO!')
 })
